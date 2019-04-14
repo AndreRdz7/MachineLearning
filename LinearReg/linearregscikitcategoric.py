@@ -22,7 +22,7 @@ data_new = data[column_names].join(dummy_gender)
 column_names = data_new.columns.values.tolist()
 data_new = data_new[column_names].join(dummy_city_tier)
 # Get useful cols
-feature_cols = ["Monthly Income", "Transaction Time", "Gender_Female", "Record","Gender_Male", "City_Tier 1","City_Tier 2","City_Tier 3"]
+feature_cols = ["Monthly Income", "Transaction Time", "Record","Gender_Male", "City_Tier 2","City_Tier 3"]
 X = data_new[feature_cols]
 Y = data_new["Total Spend"]
 # Create model
@@ -41,3 +41,6 @@ sales_mean = np.mean(data_new["Total Spend"])
 sales_mean
 error = RSE/sales_mean
 error
+# Delete dummy variables (use IPython console to execute previous code with this dummies, instead of regulars)
+dummy_gender = pd.get_dummies(data["Gender"],prefix = "Gender").iloc[:,1:]
+dummy_city_tier = pd.get_dummies(data["City Tier"], prefix = "City").iloc[:,1:]
