@@ -13,7 +13,7 @@ import numpy as np
 # Import dataset
 data = pd.read_csv("./Advertising.csv")
 # Linear model of sales in function of TV ads
-linearmodel = smf.ols(formula = "Sales~TV", data = data).fit()
+linearmodel = smf.ols(formula="Sales~TV", data=data).fit()
 # See parameters
 # Where intercept means the alpha
 # Where TV means means the beta
@@ -29,8 +29,8 @@ linearmodel.summary()
 # Predict
 sales_prediction = linearmodel.predict(pd.DataFrame(data["TV"]))
 # Graph it
-data.plot(kind= "scatter", x = "TV", y = "Sales")
-plt.plot(pd.DataFrame(data["TV"]),sales_prediction, c = "red", linewidth = 2)
+data.plot(kind="scatter", x="TV", y="Sales")
+plt.plot(pd.DataFrame(data["TV"]), sales_prediction, c="red", linewidth=2)
 # SRE
 data["sales_prediction"] = 7.032594 + 0.047537 * data["TV"]
 data["RSE"] = (data["Sales"]-data["sales_prediction"])**2
